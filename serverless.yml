@@ -12,17 +12,15 @@
 # Happy Coding!
 
 service: aqms
-# app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
-
-# You can pin your service to only deploy with a specific Serverless version
-# Check out our docs for more details
 frameworkVersion: '3'
 
 provider:
   name: aws
   runtime: nodejs12.x
+  memorySize: 1024
+  stage: dev
+  timeout: 15
+  region: us-east-1
 
 # you can overwrite defaults here
 #  stage: dev
@@ -47,8 +45,8 @@ provider:
 #                - "/*"
 
 # you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+# environment:
+#   variable1: value1
 
 # you can add packaging information here
 #package:
@@ -61,13 +59,15 @@ provider:
 functions:
   hello:
     handler: handler.hello
-#    The following are a few example events you can configure
-#    NOTE: Please make sure to change your handler code to work with those events
-#    Check the event documentation for details
-#    events:
-#      - httpApi:
-#          path: /users/create
-#          method: get
+    events:
+      - http: ANY /{proxy+}
+      - http: ANY /
+    environment:
+      SALT: 0785f0f4d87dcc1fa91592bce2623af0
+      SECRET_KEY: f82a06ba1eddb7d679c0f6c193df7cb5345dd2a286717809d50c45f348a18c925e0f8635f0bca57d15dda1693ca6ddf1c81555945e0f71e5c42df2818567daff
+      PORT: 7777
+      DB_CONNECT: mongodb+srv://valli:valli@cluster0.qe9gevd.mongodb.net/sensor?retryWrites=true&w=majority
+      EXPIRES_IN: 2h
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)

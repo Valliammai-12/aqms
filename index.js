@@ -63,6 +63,7 @@ app.use((err, req, res, next) => {
 });
 
 //Server listen
-app.listen(process.env.PORT, () => {
-  console.log(`Server running at port ${process.env.PORT}`);//first commit
-});
+// app.listen(process.env.PORT, () => {
+//   console.log(`Server running at port ${process.env.PORT}`);//first commit
+// });
+module.exports=app;
