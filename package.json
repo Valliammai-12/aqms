@@ -1,5 +1,5 @@
 {
-  "name": "node_express_application",
+  "name": "aqms",
   "version": "1.0.0",
   "description": "Node js express application with jwt authentication",
   "main": "index.js",
