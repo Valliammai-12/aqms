@@ -2,7 +2,6 @@ const express = require("express");
 const {auth, checkAuth} = require("./authentication");
 const path = require("path");
 const mongoose = require("mongoose");
-const cors = require('cors');
 require("dotenv").config();
 
 
@@ -33,10 +32,6 @@ app.use(express.json());
 
 
 //Express routes
-app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:7777"],
-  credentials: true,
-}));
 const appRoutes = require("./router/app.route");
 app.use('/api', appRoutes);
 
