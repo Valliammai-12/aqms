@@ -8,7 +8,7 @@ const sensorSchema = new mongoose.Schema({
         max: 255,
     },
     carbon: {
-        type: Number
+        type: Number,
     },
     co: {
         type: Number,
